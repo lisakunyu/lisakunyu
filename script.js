@@ -66,24 +66,18 @@ function selectSaldo(amount) {
 
 // WhatsApp message formatter
 function formatWhatsAppMessage(form) {
-  const nama = form.nama.value.trim();
-  const alamat = form.alamat.value.trim();
-  const whatsapp = form.whatsapp.value.trim();
-  const saldo = form.saldo.value.trim();
-  
-  if (!nama || !alamat || !whatsapp || !saldo) {
-    alert("Semua field harus diisi!");
-    return false; // Prevent form submission if any field is empty
-  }
+  const nama = form.nama.value;
+  const alamat = form.alamat.value;
+  const whatsapp = form.whatsapp.value;
+  const saldo = form.saldo.value;
 
+  // Buat pesan tanpa encoding berlebihan
   const message = `Halo, saya ingin mendaftar sebagai mitra:\n\n` +
                   `Nama: ${nama}\n` +
                   `Alamat: ${alamat}\n` +
                   `Nomor WhatsApp: ${whatsapp}\n` +
                   `Saldo Awal: Rp${saldo}\n\n` +
                   `Silakan proses pendaftaran saya.`;
-  
-  // Set the message text to the WhatsApp message hidden input
-  form.text.value = encodeURIComponent(message);
-  return true; // Proceed with form submission
+
+  return true;
 }
