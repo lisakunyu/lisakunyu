@@ -15,7 +15,6 @@ function selectSaldo(nominal) {
 }
 
 const saldoOptions = document.querySelectorAll('.saldo-option');
-
 saldoOptions.forEach(option => {
   option.addEventListener('click', () => {
     saldoOptions.forEach(opt => opt.classList.remove('selected'));
