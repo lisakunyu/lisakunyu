@@ -94,3 +94,19 @@ button {
   background-color: #4CAF50;
   color: white;
   padding
+}
+
+.saldo-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.saldo-option {
+  width: 30%; /* atur lebar elemen */
+  margin: 10px; /* atur margin */
+  padding: 10px; /* atur padding */
+  border: 1px solid #ccc; /* atur border */
+  border-radius: 5px; /* atur border radius */
+  cursor: pointer; /* atur cursor */
+}
