@@ -96,10 +96,15 @@
         const whatsapp = document.getElementById('whatsapp').value;
         const saldo = document.getElementById('selectedSaldo').value;
 
-        const message = `Halo, saya ingin mendaftar sebagai mitra.%0A%0A` +
-                        `Nama: ${nama}%0A` +
-                        `WhatsApp: ${whatsapp}%0A` +
-                        `Saldo Awal: ${saldo}`;
+        const message = `
+  Halo Admin, saya ingin mendaftar sebagai mitra.
+
+  Nama: ${nama}
+  WhatsApp: ${whatsapp}
+  Saldo Awal: ${saldo}
+
+  Silakan proses pendaftaran saya. Terima kasih!
+`;
 
         document.getElementById('whatsappMessage').value = message;
     }
