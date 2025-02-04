@@ -8,8 +8,9 @@ document.addEventListener('DOMContentLoaded', function() {
   const sidebar = document.getElementById('sidebar');
   
   hamburger.addEventListener('click', () => {
-    sidebar.classList.toggle('active');
-  });
+  console.log('Hamburger clicked');
+  sidebar.classList.toggle('active');
+});
 
   // Back to top button visibility on scroll
   const backToTop = document.getElementById('back-to-top');
