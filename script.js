@@ -1,5 +1,6 @@
 function formatWhatsAppMessage(form) {
   const nama = document.getElementById('nama').value;
+  const alamat = document.getElementById('alamat').value;
   const whatsapp = document.getElementById('whatsapp').value;
   const saldo = document.getElementById('selectedSaldo').value;
   const message = `Halo Admin, saya ingin mendaftar sebagai mitra.\n\nNama: ${nama}\nAlamat Rumah: ${alamat}\nWhatsApp: ${whatsapp}\nSaldo Awal: ${saldo}\n\nSilakan proses pendaftaran saya. Terima kasih!`;
