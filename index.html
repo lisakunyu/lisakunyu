@@ -64,55 +64,53 @@
                 - Pelatihan GRATIS</p>
             </div>
 
-            <form action="https://wa.me/6282190108094" method="GET" target="_blank"> <!-- Ganti dengan URL tujuan -->
-                <div class="form-group">
-                    <label>Nama Lengkap:</label>
-                    <input type="text" name="nama" required>
-                </div>
-                
-                <div class="form-group">
-                    <label>Nomor WhatsApp:</label>
-                    <input type="tel" name="whatsapp" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Pilih Saldo Awal:</label>
-                    <div class="saldo-options">
-                        <div class="saldo-option" onclick="selectSaldo(50000)">50.000</div>
-                        <div class="saldo-option" onclick="selectSaldo(75000)">75.000</div>
-                        <div class="saldo-option" onclick="selectSaldo(100000)">100.000</div>
-                    </div>
-                    <input type="hidden" name="saldo" id="selectedSaldo" required>
-                </div>
-
-                <button type="submit">DAFTAR SEKARANG</button>
-            </form>
-        </div>
-
-        <div class="admin-contact">
-            Hubungi Admin:<br>
-            <a href="https://wa.me/6282190108094">+62 821-9010-8094</a> 📞
-        </div>
+            <form action="https://wa.me/6282190108094" method="GET" target="_blank" onsubmit="formatWhatsAppMessage(this)">
+    <input type="hidden" name="text" id="whatsappMessage">
+    
+    <div class="form-group">
+        <label>Nama Lengkap:</label>
+        <input type="text" name="nama" id="nama" required>
+    </div>
+    
+    <div class="form-group">
+        <label>Nomor WhatsApp:</label>
+        <input type="tel" name="whatsapp" id="whatsapp" required>
     </div>
 
-    <script>
-        // Fungsi toggle menu
-        function toggleMenu() {
-            document.getElementById('sidebar').classList.toggle('visible');
-        }
+    <div class="form-group">
+        <label>Pilih Saldo Awal:</label>
+        <div class="saldo-options">
+            <div class="saldo-option" onclick="selectSaldo(50000)">50.000</div>
+            <div class="saldo-option" onclick="selectSaldo(75000)">75.000</div>
+            <div class="saldo-option" onclick="selectSaldo(100000)">100.000</div>
+        </div>
+        <input type="hidden" name="saldo" id="selectedSaldo" required>
+    </div>
 
-        // Fungsi pilih saldo
-        function selectSaldo(nominal) {
-            const options = document.querySelectorAll('.saldo-option');
-            options.forEach(opt => opt.classList.remove('selected'));
-            event.target.classList.add('selected');
-            document.getElementById('selectedSaldo').value = nominal;
-        }
+    <button type="submit">DAFTAR SEKARANG</button>
+</form>
 
-        // Contoh data harga
-        const prices = {
-            // ... tetap sama
-        };
-    </script>
+<script>
+    function formatWhatsAppMessage(form) {
+        const nama = document.getElementById('nama').value;
+        const whatsapp = document.getElementById('whatsapp').value;
+        const saldo = document.getElementById('selectedSaldo').value;
+
+        const message = `Halo, saya ingin mendaftar sebagai mitra.%0A%0A` +
+                        `Nama: ${nama}%0A` +
+                        `WhatsApp: ${whatsapp}%0A` +
+                        `Saldo Awal: ${saldo}`;
+
+        document.getElementById('whatsappMessage').value = message;
+    }
+
+    function selectSaldo(nominal) {
+        const options = document.querySelectorAll('.saldo-option');
+        options.forEach(opt => opt.classList.remove('selected'));
+        event.target.classList.add('selected');
+        document.getElementById('selectedSaldo').value = nominal;
+    }
+</script>
+
 </body>
 </html>
