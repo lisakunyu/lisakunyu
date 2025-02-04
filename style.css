@@ -109,8 +109,8 @@ button {
 }
 
 .banner {
-  width: auto;
-  height: 100%;
+  width: 100%;
+  height: 320px;
   object-fit: cover;
   margin-bottom: 20px;
 }
