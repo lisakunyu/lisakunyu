@@ -79,5 +79,7 @@ function formatWhatsAppMessage(form) {
                   `Saldo Awal: Rp${saldo}\n\n` +
                   `Silakan proses pendaftaran saya.`;
 
+  // Tidak perlu encodeURIComponent secara keseluruhan
+  form.text.value = message; // Menetapkan pesan tanpa encoding tambahan
   return true;
 }
