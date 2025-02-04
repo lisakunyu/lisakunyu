@@ -12,3 +12,13 @@ function selectSaldo(nominal) {
   event.target.classList.add('selected');
   document.getElementById('selectedSaldo').value = nominal;
 }
+
+const saldoOptions = document.querySelectorAll('.saldo-option');
+
+saldoOptions.forEach(option => {
+  option.addEventListener('click', () => {
+    saldoOptions.forEach(opt => opt.classList.remove('selected'));
+    option.classList.add('selected');
+    document.getElementById('selectedSaldo').value = option.textContent;
+  });
+});
