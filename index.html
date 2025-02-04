@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konter Pulsa - Daftar Mitra</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            background-color: #FFA500;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 80px;
+            background-color: #333;
+            color: white;
+            width: 250px;
+            padding: 1rem;
+            transition: 0.3s;
+        }
+
+        .sidebar.hidden {
+            left: -250px;
+        }
+
+        .menu-toggle {
+            position: absolute;
+            left: 10px;
+            top: 20px;
+            cursor: pointer;
+            font-size: 24px;
+            color: white;
+        }
+
+        .content {
+            margin-left: 250px;
+            padding: 2rem;
+            transition: 0.3s;
+        }
+
+        .content.expanded {
+            margin-left: 0;
+        }
+
+        .admin-contact {
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .menu-list {
+            list-style: none;
+        }
+
+        .menu-list li {
+            margin: 1rem 0;
+        }
+
+        .menu-list a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        .registration-form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .promo-section {
+            background-color: #FFD700;
+            padding: 1rem;
+            margin: 2rem 0;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .price-check {
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <h1>KONTER PULSA MURAH</h1>
+        <div class="admin-contact">
+            Admin: +62 821-9010-8094 📞
+        </div>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+        <ul class="menu-list">
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#daftar">Daftar Mitra</a></li>
+            <li><a href="#harga">Cek Harga</a></li>
+            <li><a href="#bonus">Bonus</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+        </ul>
+    </div>
+
+    <div class="content" id="content">
+        <div class="registration-form">
+            <h2>Form Pendaftaran Mitra</h2>
+            <div class="promo-section">
+                <h3>🔥 DAFTAR SEKARANG DAN DAPATKAN BONUS! 🔥</h3>
+                <p>Bonus 50.000 untuk 10 pendaftar pertama setiap hari!<br>
+                Dapatkan komisi hingga 15% dari setiap transaksi</p>
+            </div>
+
+            <form>
+                <div class="form-group">
+                    <label>Nama Lengkap:</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Nomor WhatsApp:</label>
+                    <input type="tel" required>
+                </div>
+                <div class="form-group">
+                    <label>Pilih Provider:</label>
+                    <select>
+                        <option>Telkomsel</option>
+                        <option>Indosat</option>
+                        <option>XL</option>
+                        <option>Tri</option>
+                        <option>Smartfren</option>
+                    </select>
+                </div>
+                <button type="submit">DAFTAR SEKARANG</button>
+            </form>
+        </div>
+
+        <div class="price-check">
+            <h2>Cek Harga Provider</h2>
+            <div id="price-list">
+                <!-- Harga akan diisi via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('sidebar').classList.toggle('hidden');
+            document.getElementById('content').classList.toggle('expanded');
+        }
+
+        // Daftar harga (bisa disesuaikan)
+        const prices = {
+            Telkomsel: 'Pulsa 5.000: Rp 4.800\nPulsa 10.000: Rp 9.700',
+            Indosat: 'Pulsa 5.000: Rp 4.750\nPulsa 10.000: Rp 9.650',
+            XL: 'Pulsa 5.000: Rp 4.850\nPulsa 10.000: Rp 9.720',
+            Tri: 'Pulsa 5.000: Rp 4.700\nPulsa 10.000: Rp 9.600',
+            Smartfren: 'Pulsa 5.000: Rp 4.650\nPulsa 10.000: Rp 9.550'
+        };
+
+        // Menampilkan daftar harga
+        const priceList = document.getElementById('price-list');
+        for (const provider in prices) {
+            const div = document.createElement('div');
+            div.innerHTML = `<h3>${provider}</h3><pre>${prices[provider]}</pre>`;
+            priceList.appendChild(div);
+        }
+    </script>
+</body>
+</html>
