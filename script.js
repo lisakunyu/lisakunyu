@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Hamburger menu
+  // Hamburger menu toggle
   const hamburger = document.createElement('button');
   hamburger.className = 'hamburger';
   hamburger.innerHTML = '☰';
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     sidebar.classList.toggle('active');
   });
 
-  // Back to top button
+  // Back to top button visibility on scroll
   const backToTop = document.getElementById('back-to-top');
   
   window.addEventListener('scroll', () => {
@@ -30,19 +30,21 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Smooth scroll for navigation
+  // Smooth scroll for internal navigation links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
       const target = document.querySelector(this.getAttribute('href'));
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
     });
   });
 
-  // Close sidebar when clicking outside
+  // Close sidebar when clicking outside of it
   document.addEventListener('click', (e) => {
     if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
       sidebar.classList.remove('active');
@@ -50,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// Saldo selection
+// Function to handle saldo selection
 function selectSaldo(amount) {
   const options = document.querySelectorAll('.saldo-option');
   options.forEach(option => {
@@ -64,11 +66,16 @@ function selectSaldo(amount) {
 
 // WhatsApp message formatter
 function formatWhatsAppMessage(form) {
-  const nama = form.nama.value;
-  const alamat = form.alamat.value;
-  const whatsapp = form.whatsapp.value;
-  const saldo = form.saldo.value;
+  const nama = form.nama.value.trim();
+  const alamat = form.alamat.value.trim();
+  const whatsapp = form.whatsapp.value.trim();
+  const saldo = form.saldo.value.trim();
   
+  if (!nama || !alamat || !whatsapp || !saldo) {
+    alert("Semua field harus diisi!");
+    return false; // Prevent form submission if any field is empty
+  }
+
   const message = `Halo, saya ingin mendaftar sebagai mitra:\n\n` +
                   `Nama: ${nama}\n` +
                   `Alamat: ${alamat}\n` +
@@ -76,6 +83,7 @@ function formatWhatsAppMessage(form) {
                   `Saldo Awal: Rp${saldo}\n\n` +
                   `Silakan proses pendaftaran saya.`;
   
+  // Set the message text to the WhatsApp message hidden input
   form.text.value = encodeURIComponent(message);
-  return true;
+  return true; // Proceed with form submission
 }
