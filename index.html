@@ -1,48 +1,62 @@
 <!DOCTYPE html>
 <html lang="id">
- 
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Konter Pulsa - Mitra Baru</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <header class="header">
-<header class="header">
-  <img src="banner.png" alt="Banner" class="banner">
-    <!-- Header tetap sama... -->
+    <img src="banner.png" alt="Banner" class="banner">
+    <nav class="menu">
+      <ul>
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#download-app">Download App</a></li>
+        <li><a href="#admin">Admin</a></li>
+        <li><a href="#tutorial">Tutorial</a></li>
+        <li><a href="#pendaftaran">Pendaftaran</a></li>
+        <li><a href="#provider">Provider</a></li>
+        <li><a href="#harga">Harga</a></li>
+      </ul>
+    </nav>
   </header>
-
 
   <div class="sidebar hidden" id="sidebar">
     <!-- Menu list tetap sama... -->
   </div>
   <div class="content expanded" id="content">
+    <section id="tentang" class="section">
+      <h2>Tentang Kami</h2>
+      <p>Informasi tentang konter pulsa dan layanan kami.</p>
+    </section>
+    <section id="download-app" class="section">
+      <h2>Download App</h2>
+      <p>Unduh aplikasi kami untuk kemudahan transaksi.</p>
+    </section>
+    <!-- Lanjutkan untuk bagian lainnya -->
+
     <div class="registration-form">
       <h2>Form Pendaftaran Mitra</h2>
       <div class="promo-section">
         <h3>🎉 BONUS PERDANA 20%! 🎉</h3>
         <p>Daftar sekarang dan dapatkan:<br> - Saldo awal anda Beserta promo lainnya yang menarik <br> - Free akses aplikasi topup<br> - Pelatihan GRATIS</p>
-
-
       </div>
       <form action="https://wa.me/6282190108094" method="GET" target="_blank" onsubmit="formatWhatsAppMessage(this)">
         <input type="hidden" name="text" id="whatsappMessage" aria-label="Pesan WhatsApp">
         <div class="form-group">
           <label for="nama">Nama Lengkap:</label>
-          <input type="text" name="nama" id="nama" required>
+          <input type="text" name="nama" id="nama" placeholder="Masukkan nama lengkap" required>
         </div>
-
-<div class="form-group">
+        <div class="form-group">
           <label for="alamat">Alamat Rumah:</label>
-          <input type="text" name="alamat" id="alamat" required>
+          <input type="text" name="alamat" id="alamat" placeholder="Masukkan alamat rumah" required>
         </div>
-
-               
-<div class="form-group">
+        <div class="form-group">
           <label for="whatsapp">Nomor WhatsApp:</label>
-          <input type="tel" name="whatsapp" id="whatsapp" required>
+          <input type="tel" name="whatsapp" id="whatsapp" placeholder="Contoh: 628123456789" required>
         </div>
         <div class="form-group">
           <label for="saldo">Pilih Saldo Awal:</label>
@@ -57,6 +71,8 @@
       </form>
     </div>
   </div>
+  <button id="back-to-top" class="back-to-top">↑</button>
   <script src="script.js"></script>
 </body>
+
 </html>
