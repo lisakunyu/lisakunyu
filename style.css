@@ -96,17 +96,12 @@ button {
   padding
 }
 
-.saldo-options {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+.saldo-option {
+  /* ... kode CSS sebelumnya ... */
+  transition: background-color 0.3s ease-in-out;
 }
 
-.saldo-option {
-  width: 30%; /* atur lebar elemen */
-  margin: 10px; /* atur margin */
-  padding: 10px; /* atur padding */
-  border: 1px solid #ccc; /* atur border */
-  border-radius: 5px; /* atur border radius */
-  cursor: pointer; /* atur cursor */
+.saldo-option.selected {
+  background-color: #4CAF50; /* warna hijau */
+  color: #fff; /* warna putih */
 }
