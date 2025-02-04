@@ -1,156 +1,246 @@
-/* style.css */
-
-/* Header */
-.header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  transition: all 0.3s ease;
-}
-
-.hamburger {
-  display: none;
-  position: absolute;
-  left: 20px;
-  top: 20px;
-  font-size: 24px;
-  cursor: pointer;
-  z-index: 1001;
-}
-
-/* Menu */
-nav.menu {
-  background: rgba(255,255,255,0.9);
-  padding: 15px 0;
-}
-
-nav.menu ul {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  list-style: none;
+/* Reset default styles */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-nav.menu a {
+body {
+  line-height: 1.6;
+  background-color: #f5f5f5;
+}
+
+.header {
+  background: #2c3e50;
+  padding: 1rem;
+  position: relative;
+}
+
+.banner {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.menu {
+  display: none;
+}
+
+.menu ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.menu a {
+  color: white;
   text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.menu a:hover {
+  background: #34495e;
+}
+
+.content {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section {
+  background: white;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.registration-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.promo-section {
+  background: #e8f4ff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
   color: #333;
-  font-weight: 500;
-  padding: 10px 15px;
-  border-radius: 5px;
-  transition: all 0.3s ease;
 }
 
-nav.menu a:hover {
+input[type="text"],
+input[type="tel"] {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.saldo-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.saldo-option {
+  background: #f8f9fa;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 2px solid transparent;
+}
+
+.saldo-option.selected {
+  border-color: #3498db;
+  background: #e3f2fd;
+}
+
+button[type="submit"] {
+  background: #3498db;
+  color: white;
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button[type="submit"]:hover {
+  background: #2980b9;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #3498db;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-to-top.show {
+  opacity: 1;
+}
+
+/* Mobile Menu */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  padding: 1rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background: white;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  transition: left 0.3s;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar a {
+  display: block;
+  padding: 1rem;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.sidebar a:hover {
   background: #f0f0f0;
-  color: #007bff;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* Desktop styles */
+@media (min-width: 768px) {
+  .menu {
+    display: block;
+  }
+  
+  .sidebar {
+    display: none;
+  }
+  
+  .hamburger {
+    display: none;
+  }
+  
+  .saldo-options {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
   .hamburger {
     display: block;
   }
   
-  nav.menu ul {
-    flex-direction: column;
-    gap: 10px;
-    padding: 20px;
+  .menu {
+    display: none;
   }
   
-  .sidebar {
-    width: 250px;
-    left: -250px;
+  .content {
+    padding: 1rem;
   }
   
-  .sidebar.active {
-    left: 0;
+  .section {
+    padding: 1.5rem;
   }
   
-  .content.expanded {
-    margin-left: 0;
+  .registration-form {
+    padding: 1.5rem;
   }
 }
-
-/* Saldo Options */
-.saldo-options {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.saldo-option {
-  padding: 15px;
-  border: 2px solid #ddd;
-  border-radius: 8px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.saldo-option.selected {
-  border-color: #007bff;
-  background: #e3f2ff;
-  transform: scale(1.05);
-}
-
-/* Form */
-.registration-form {
-  max-width: 600px;
-  margin: 100px auto 50px;
-  padding: 30px;
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.1);
-}
-
-.section {
-     padding: 60px 20px;
-     opacity: 0;
-     transform: translateY(20px);
-     transition: opacity 0.6s ease, transform 0.6s ease;
-   }
-
-   .section.visible {
-     opacity: 1;
-     transform: translateY(0);
-   }
-
-.back-to-top {
-     display: none;
-     position: fixed;
-     bottom: 20px;
-     right: 20px;
-     padding: 10px 15px;
-     background-color: #007bff;
-     color: white;
-     border: none;
-     border-radius: 50%;
-     cursor: pointer;
-     font-size: 18px;
-     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-     transition: background-color 0.3s ease;
-   }
-
-   .back-to-top:hover {
-     background-color: #0056b3;
-   }
-
-input::placeholder {
-     color: #999;
-     font-style: italic;
-   }
-
-@media (max-width: 768px) {
-     .registration-form {
-       padding: 20px;
-       margin: 50px auto;
-     }
-
-     .saldo-options {
-       grid-template-columns: 1fr;
-     }
-   }
