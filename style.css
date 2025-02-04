@@ -114,3 +114,7 @@ button {
   object-fit: cover;
   margin-bottom: 20px;
 }
+
+.promo-section {
+  margin-bottom: 30px; /* Tambahkan margin bottom */
+}
