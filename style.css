@@ -1,4 +1,4 @@
-/* Reset CSS */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -10,21 +10,17 @@
 body {
   background-color: #f4f4f4;
   color: #333;
-  line-height: 1.6;
   text-align: center;
 }
 
 /* Header */
 .header {
-  background-color: #007bff;
+  background: #007bff;
   color: #fff;
   padding: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
 }
 
 .banner {
@@ -32,7 +28,6 @@ body {
 }
 
 .hamburger {
-  display: none;
   font-size: 24px;
   background: none;
   border: none;
@@ -40,43 +35,68 @@ body {
   cursor: pointer;
 }
 
-/* Navigation Menu */
-.menu ul {
-  list-style: none;
-  display: flex;
-}
-
-.menu ul li {
-  margin: 0 15px;
-}
-
-.menu ul li a {
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-  padding: 10px;
-}
-
-.menu ul li a:hover {
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 5px;
-}
-
 /* Sidebar */
 .sidebar {
-  width: 250px;
-  background: #007bff;
-  color: white;
   position: fixed;
   left: -250px;
   top: 0;
+  width: 250px;
   height: 100%;
+  background: #007bff;
+  color: white;
   transition: 0.3s;
   padding-top: 60px;
 }
 
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 15px;
+  text-align: left;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+.sidebar ul li a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
 .sidebar.visible {
   left: 0;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* Overlay */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.overlay.active {
+  display: block;
 }
 
 /* Content */
@@ -86,47 +106,17 @@ body {
   margin: auto;
 }
 
-/* Sections */
-.section {
-  background: white;
-  padding: 20px;
-  margin: 20px 0;
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-.registration-form {
-  text-align: left;
-}
-
-/* Promo Section */
-.promo-section {
-  background: #ff9800;
-  color: white;
-  padding: 15px;
-  text-align: center;
-  border-radius: 8px;
-  margin-bottom: 15px;
-}
-
-/* Form Styles */
+/* Form */
 .form-group {
   margin-bottom: 15px;
-}
-
-.form-group label {
-  display: block;
-  font-weight: bold;
 }
 
 .form-group input {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 5px;
 }
 
-/* Saldo Options */
 .saldo-options {
   display: flex;
   justify-content: space-between;
@@ -136,87 +126,19 @@ body {
   background: #007bff;
   color: white;
   padding: 10px;
-  text-align: center;
   width: 30%;
-  border-radius: 5px;
   cursor: pointer;
+  text-align: center;
 }
 
 .saldo-option:hover {
   background: #0056b3;
 }
 
-/* Button */
-button {
-  background: #28a745;
-  color: white;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  border-radius: 5px;
-  width: 100%;
-}
-
-button:hover {
-  background: #218838;
-}
-
-/* Footer */
-.footer {
-  background: #333;
-  color: white;
-  text-align: center;
-  padding: 10px;
-  margin-top: 20px;
-}
-
-/* Back to Top Button */
+/* Back to Top */
 .back-to-top {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: #007bff;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 50%;
-  font-size: 18px;
-  cursor: pointer;
   display: none;
-}
-
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-  .menu ul {
-    display: none;
-    flex-direction: column;
-    background: #007bff;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    width: 200px;
-  }
-
-  .menu ul li {
-    text-align: center;
-    padding: 10px;
-  }
-
-  .hamburger {
-    display: block;
-  }
-
-  .menu.active ul {
-    display: flex;
-  }
-
-  .saldo-options {
-    flex-direction: column;
-  }
-
-  .saldo-option {
-    width: 100%;
-    margin-bottom: 10px;
-  }
 }
