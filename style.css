@@ -1,155 +1,164 @@
-/* style.css */
-
-/* Reset Dasar */
+/* Reset CSS */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
+/* Body */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  background-color: #f5f5f5;
+  background-color: #f4f4f4;
   color: #333;
+  line-height: 1.6;
+  text-align: center;
 }
 
 /* Header */
 .header {
-  position: relative;
-  width: 100%;
-}
-
-.banner {
-  width: 100%;
-  height: auto;
-  max-height: 300px;
-  object-fit: cover;
-}
-
-.hamburger {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: rgba(255, 255, 255, 0.8);
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  display: block;
+  background-color: #007bff;
+  color: #fff;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
   z-index: 1000;
 }
 
-.menu {
+.banner {
+  max-width: 150px;
+}
+
+.hamburger {
   display: none;
-  background: #fff;
-  padding: 1rem;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
 }
 
-.menu.active {
-  display: block;
-}
-
+/* Navigation Menu */
 .menu ul {
   list-style: none;
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
 }
 
-.menu a {
+.menu ul li {
+  margin: 0 15px;
+}
+
+.menu ul li a {
   text-decoration: none;
-  color: #333;
-  padding: 0.5rem;
-  transition: color 0.3s;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
 }
 
-.menu a:hover {
-  color: #007bff;
+.menu ul li a:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
 }
 
-/* Konten Utama */
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background: #007bff;
+  color: white;
+  position: fixed;
+  left: -250px;
+  top: 0;
+  height: 100%;
+  transition: 0.3s;
+  padding-top: 60px;
+}
+
+.sidebar.visible {
+  left: 0;
+}
+
+/* Content */
 .content {
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
 }
 
+/* Sections */
 .section {
   background: white;
-  padding: 2rem;
-  margin-bottom: 2rem;
+  padding: 20px;
+  margin: 20px 0;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Form Pendaftaran */
 .registration-form {
-  max-width: 600px;
-  margin: 0 auto;
+  text-align: left;
 }
 
+/* Promo Section */
 .promo-section {
-  background: #e3f2fd;
-  padding: 1.5rem;
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
+  background: #ff9800;
+  color: white;
+  padding: 15px;
   text-align: center;
+  border-radius: 8px;
+  margin-bottom: 15px;
 }
 
+/* Form Styles */
 .form-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: 15px;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
+  font-weight: bold;
 }
 
 .form-group input {
   width: 100%;
-  padding: 0.8rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
+/* Saldo Options */
 .saldo-options {
   display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .saldo-option {
-  flex: 1;
-  min-width: 120px;
-  padding: 1rem;
-  border: 2px solid #ddd;
-  border-radius: 8px;
+  background: #007bff;
+  color: white;
+  padding: 10px;
   text-align: center;
+  width: 30%;
+  border-radius: 5px;
   cursor: pointer;
-  transition: all 0.3s;
 }
 
 .saldo-option:hover {
-  border-color: #007bff;
-  background: #e3f2fd;
+  background: #0056b3;
 }
 
-button[type="submit"] {
-  width: 100%;
-  padding: 1rem;
+/* Button */
+button {
   background: #28a745;
   color: white;
+  padding: 10px;
   border: none;
-  border-radius: 4px;
-  font-size: 1.1rem;
   cursor: pointer;
-  transition: background 0.3s;
+  font-size: 16px;
+  border-radius: 5px;
+  width: 100%;
 }
 
-button[type="submit"]:hover {
+button:hover {
   background: #218838;
 }
 
@@ -158,65 +167,56 @@ button[type="submit"]:hover {
   background: #333;
   color: white;
   text-align: center;
-  padding: 1rem;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
 }
 
-/* Tombol Back to Top */
+/* Back to Top Button */
 .back-to-top {
   position: fixed;
-  bottom: 60px;
+  bottom: 20px;
   right: 20px;
-  padding: 10px 15px;
-  background: rgba(0,0,0,0.7);
+  background: #007bff;
   color: white;
+  padding: 10px;
   border: none;
   border-radius: 50%;
+  font-size: 18px;
   cursor: pointer;
   display: none;
 }
 
-/* Responsif */
-@media (min-width: 768px) {
-  .hamburger {
-    display: none;
-  }
-
-  .menu {
-    display: block;
-    position: static;
-    background: transparent;
-    box-shadow: none;
-  }
-
+/* Responsive Design */
+@media screen and (max-width: 768px) {
   .menu ul {
-    flex-direction: row;
-    justify-content: center;
+    display: none;
+    flex-direction: column;
+    background: #007bff;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+  }
+
+  .menu ul li {
+    text-align: center;
+    padding: 10px;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .menu.active ul {
+    display: flex;
   }
 
   .saldo-options {
-    flex-direction: row;
-  }
-
-  .form-group {
-    display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .content {
-    padding: 1rem;
-  }
-
-  .section {
-    padding: 1rem;
   }
 
   .saldo-option {
-    flex: 100%;
+    width: 100%;
+    margin-bottom: 10px;
   }
 }
