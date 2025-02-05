@@ -205,6 +205,48 @@ button[type="submit"]:hover {
   background: #f0f0f0;
 }
 
+/* Mobile styles */
+@media (max-width: 767px) {
+  .hamburger {
+    display: block;
+  }
+
+  .menu {
+    display: none; /* Pastikan menu tersembunyi di awal */
+  }
+
+  .menu.active {
+    display: block; /* Tampilkan menu ketika aktif */
+  }
+
+  .content {
+    padding: 1rem;
+  }
+
+  .section {
+    padding: 1.5rem;
+  }
+
+  .registration-form {
+    padding: 1.5rem;
+  }
+
+  .sidebar.active {
+    left: 0;
+  }
+
+  .menu ul {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .menu a {
+    padding: 1rem;
+    text-align: center;
+    border-radius: 0;
+  }
+}
+
 /* Desktop styles */
 @media (min-width: 768px) {
   .menu {
