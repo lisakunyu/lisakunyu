@@ -159,6 +159,8 @@ button[type="submit"]:hover {
 }
 
 /* Mobile Menu */
+
+@media (max-width: 767px) {
 .hamburger {
   display: none;
   background: none;
@@ -205,13 +207,7 @@ button[type="submit"]:hover {
   background: #f0f0f0;
 }
 
-/* Mobile styles */
-@media (max-width: 767px) {
-  .hamburger {
-    display: block;
-  }
-
-  .menu {
+.menu {
     display: none; /* Pastikan menu tersembunyi di awal */
   }
 
@@ -229,10 +225,6 @@ button[type="submit"]:hover {
 
   .registration-form {
     padding: 1.5rem;
-  }
-
-  .sidebar.active {
-    left: 0;
   }
 
   .menu ul {
