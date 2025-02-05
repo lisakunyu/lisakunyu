@@ -1,89 +1,61 @@
-document.addEventListener('DOMContentLoaded', function() {
-  // Hamburger menu toggle
-  const hamburger = document.createElement('button');
-  hamburger.className = 'hamburger';
-  hamburger.innerHTML = '☰';
-  document.querySelector('.header').appendChild(hamburger);
-  
-  const sidebar = document.getElementById('sidebar');
-  const menu = document.querySelector('.menu'); // Pilih elemen menu
-  
-  hamburger.addEventListener('click', () => {
-    console.log('Hamburger clicked');
-    sidebar.classList.toggle('active');
-    menu.classList.toggle('active'); // Toggling menu visibility
+document.addEventListener("DOMContentLoaded", function () {
+  // Hamburger Menu Toggle
+  const hamburger = document.querySelector(".hamburger");
+  const menu = document.querySelector(".menu");
+
+  hamburger.addEventListener("click", function () {
+    menu.classList.toggle("active");
   });
 
-  // Back to top button visibility on scroll
-  const backToTop = document.getElementById('back-to-top');
-  
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-      backToTop.classList.add('show');
+  // Back to Top Button
+  const backToTopButton = document.getElementById("back-to-top");
+
+  window.addEventListener("scroll", function () {
+    if (window.scrollY > 200) {
+      backToTopButton.style.display = "block";
     } else {
-      backToTop.classList.remove('show');
+      backToTopButton.style.display = "none";
     }
   });
 
-  backToTop.addEventListener('click', (e) => {
-    e.preventDefault();
+  backToTopButton.addEventListener("click", function () {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: "smooth"
     });
   });
 
-  // Smooth scroll for internal navigation links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
+  // Pilihan Saldo
+  function selectSaldo(amount) {
+    document.getElementById("selectedSaldo").value = amount;
+    document.querySelectorAll(".saldo-option").forEach(option => {
+      option.style.background = "#007bff";
     });
-  });
+    event.target.style.background = "#0056b3";
+  }
 
-  // Close sidebar when clicking outside of it
-  document.addEventListener('click', (e) => {
-    if (!sidebar.contains(e.target) && !hamburger.contains(e.target) && !menu.contains(e.target)) {
-      sidebar.classList.remove('active');
-      menu.classList.remove('active'); // Hide menu when clicking outside
+  // Format Pesan WhatsApp
+  window.formatWhatsAppMessage = function (form) {
+    const nama = form.nama.value;
+    const alamat = form.alamat.value;
+    const whatsapp = form.whatsapp.value;
+    const saldo = form.saldo.value;
+
+    if (!saldo) {
+      alert("Silakan pilih saldo awal!");
+      return false;
     }
+
+    const message = `Halo Admin, saya ingin mendaftar sebagai Mitra Pulsa.\n\nNama: ${nama}\nAlamat: ${alamat}\nNomor WhatsApp: ${whatsapp}\nSaldo Awal: Rp${saldo}`;
+    document.getElementById("whatsappMessage").value = encodeURIComponent(message);
+
+    return true;
+  };
+
+  // Tambahkan event listener ke setiap saldo-option
+  document.querySelectorAll(".saldo-option").forEach(option => {
+    option.addEventListener("click", function () {
+      selectSaldo(this.textContent.replace(".", "").trim());
+    });
   });
 });
-
-// Function to handle saldo selection
-function selectSaldo(amount) {
-  const options = document.querySelectorAll('.saldo-option');
-  options.forEach(option => {
-    option.classList.remove('selected');
-    if (parseInt(option.textContent) === amount) {
-      option.classList.add('selected');
-    }
-  });
-  document.getElementById('selectedSaldo').value = amount;
-}
-
-// WhatsApp message formatter
-function formatWhatsAppMessage(form) {
-  const nama = form.nama.value;
-  const alamat = form.alamat.value;
-  const whatsapp = form.whatsapp.value;
-  const saldo = form.saldo.value;
-
-  // Buat pesan tanpa encoding berlebihan
-  const message = `Halo, saya ingin mendaftar sebagai mitra:\n\n` +
-                  `Nama: ${nama}\n` +
-                  `Alamat: ${alamat}\n` +
-                  `Nomor WhatsApp: ${whatsapp}\n` +
-                  `Saldo Awal: Rp${saldo}\n\n` +
-                  `Silakan proses pendaftaran saya.`;
-
-  // Tidak perlu encodeURIComponent secara keseluruhan
-  form.text.value = message; // Menetapkan pesan tanpa encoding tambahan
-  return true;
-}
