@@ -153,7 +153,7 @@ button[type="submit"]:hover {
   align-items: center;
   justify-content: center;
 }
-
+}
 .back-to-top.show {
   opacity: 1;
 }
