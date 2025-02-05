@@ -1,61 +1,222 @@
-document.addEventListener("DOMContentLoaded", function () {
-  // Hamburger Menu Toggle
-  const hamburger = document.querySelector(".hamburger");
-  const menu = document.querySelector(".menu");
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
-  hamburger.addEventListener("click", function () {
-    menu.classList.toggle("active");
-  });
+/* Body */
+body {
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+  text-align: center;
+}
 
-  // Back to Top Button
-  const backToTopButton = document.getElementById("back-to-top");
+/* Header */
+.header {
+  background-color: #007bff;
+  color: #fff;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
-  window.addEventListener("scroll", function () {
-    if (window.scrollY > 200) {
-      backToTopButton.style.display = "block";
-    } else {
-      backToTopButton.style.display = "none";
-    }
-  });
+.banner {
+  max-width: 150px;
+}
 
-  backToTopButton.addEventListener("click", function () {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  });
+.hamburger {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
 
-  // Pilihan Saldo
-  function selectSaldo(amount) {
-    document.getElementById("selectedSaldo").value = amount;
-    document.querySelectorAll(".saldo-option").forEach(option => {
-      option.style.background = "#007bff";
-    });
-    event.target.style.background = "#0056b3";
+/* Navigation Menu */
+.menu ul {
+  list-style: none;
+  display: flex;
+}
+
+.menu ul li {
+  margin: 0 15px;
+}
+
+.menu ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.menu ul li a:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background: #007bff;
+  color: white;
+  position: fixed;
+  left: -250px;
+  top: 0;
+  height: 100%;
+  transition: 0.3s;
+  padding-top: 60px;
+}
+
+.sidebar.visible {
+  left: 0;
+}
+
+/* Content */
+.content {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Sections */
+.section {
+  background: white;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.registration-form {
+  text-align: left;
+}
+
+/* Promo Section */
+.promo-section {
+  background: #ff9800;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Saldo Options */
+.saldo-options {
+  display: flex;
+  justify-content: space-between;
+}
+
+.saldo-option {
+  background: #007bff;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  width: 30%;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.saldo-option:hover {
+  background: #0056b3;
+}
+
+/* Button */
+button {
+  background: #28a745;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+button:hover {
+  background: #218838;
+}
+
+/* Footer */
+.footer {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  display: none;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .menu ul {
+    display: none;
+    flex-direction: column;
+    background: #007bff;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
   }
 
-  // Format Pesan WhatsApp
-  window.formatWhatsAppMessage = function (form) {
-    const nama = form.nama.value;
-    const alamat = form.alamat.value;
-    const whatsapp = form.whatsapp.value;
-    const saldo = form.saldo.value;
+  .menu ul li {
+    text-align: center;
+    padding: 10px;
+  }
 
-    if (!saldo) {
-      alert("Silakan pilih saldo awal!");
-      return false;
-    }
+  .hamburger {
+    display: block;
+  }
 
-    const message = `Halo Admin, saya ingin mendaftar sebagai Mitra Pulsa.\n\nNama: ${nama}\nAlamat: ${alamat}\nNomor WhatsApp: ${whatsapp}\nSaldo Awal: Rp${saldo}`;
-    document.getElementById("whatsappMessage").value = encodeURIComponent(message);
+  .menu.active ul {
+    display: flex;
+  }
 
-    return true;
-  };
+  .saldo-options {
+    flex-direction: column;
+  }
 
-  // Tambahkan event listener ke setiap saldo-option
-  document.querySelectorAll(".saldo-option").forEach(option => {
-    option.addEventListener("click", function () {
-      selectSaldo(this.textContent.replace(".", "").trim());
-    });
-  });
-});
+  .saldo-option {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
