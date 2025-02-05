@@ -6,11 +6,13 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelector('.header').appendChild(hamburger);
   
   const sidebar = document.getElementById('sidebar');
+  const menu = document.querySelector('.menu'); // Pilih elemen menu
   
   hamburger.addEventListener('click', () => {
-  console.log('Hamburger clicked');
-  sidebar.classList.toggle('active');
-});
+    console.log('Hamburger clicked');
+    sidebar.classList.toggle('active');
+    menu.classList.toggle('active'); // Toggling menu visibility
+  });
 
   // Back to top button visibility on scroll
   const backToTop = document.getElementById('back-to-top');
@@ -47,8 +49,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Close sidebar when clicking outside of it
   document.addEventListener('click', (e) => {
-    if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
+    if (!sidebar.contains(e.target) && !hamburger.contains(e.target) && !menu.contains(e.target)) {
       sidebar.classList.remove('active');
+      menu.classList.remove('active'); // Hide menu when clicking outside
     }
   });
 });
