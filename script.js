@@ -1,10 +1,21 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Hamburger Menu Toggle
   const hamburger = document.querySelector(".hamburger");
   const menu = document.querySelector(".menu");
+  const overlay = document.createElement("div");
 
+  overlay.classList.add("overlay");
+  document.body.appendChild(overlay);
+
+  // Toggle Menu dari Samping
   hamburger.addEventListener("click", function () {
     menu.classList.toggle("active");
+    overlay.classList.toggle("active");
+  });
+
+  // Klik di luar menu untuk menutup
+  overlay.addEventListener("click", function () {
+    menu.classList.remove("active");
+    overlay.classList.remove("active");
   });
 
   // Back to Top Button
